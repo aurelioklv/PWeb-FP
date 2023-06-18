@@ -26,9 +26,18 @@ if (isset($_SESSION['loginID'])) {
         <p class="text-white font-SEMIbold">Mulai Belajar Bersama Kami</p>
         <section class="shine-white mt-16 bg-[#1B1B1B] p-16 md:w-[50%] lg:w-[30%] mx-auto rounded-lg">
             <form class="flex flex-col gap-4" action="post_login.php" method="post">
+                <!-- Display error message -->
+                <?php if (isset($_SESSION['loginAttempt']['message'])) { ?>
+                    <div class="bg-gray-100 border-l-4 border-gray-500 text-gray-700 p-4 mb-2" role="alert">
+                        <p><?= $_SESSION['loginAttempt']['message'] ?></p>
+                    </div>
+                <?php
+                    unset($_SESSION['loginAttempt']['message']);
+                }
+                ?>
                 <div>
                     <label for="email" class="font-medium text-white">Email</label>
-                    <input id="email" name="email" class="w-full p-1.5 rounded-md bg-[#5f5f5f] text-white focus:outline-0" />
+                    <input id="email" name="email" class="w-full p-1.5 rounded-md bg-[#5f5f5f] text-white focus:outline-0" value="<?php echo isset($_SESSION['loginAttempt']['email']) ? $_SESSION['loginAttempt']['email'] : ''; ?>" />
                 </div>
 
                 <div>

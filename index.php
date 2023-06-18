@@ -31,7 +31,6 @@
                 <div class="flex justify-around gap-2 lg:gap-6 items-center">
                     <a class="nav-item" href="./contact.php">Contact Us</a>
                     <a class="nav-item" href="./login.php">Login</a>
-                    <a class="nav-item" href="./logout.php">Logout</a>
                     <button class="btn" role="button" onclick="window.location.href = './signup.php'">Sign Up</button>
                 </div>
             </div>

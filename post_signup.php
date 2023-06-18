@@ -21,7 +21,7 @@ if (isset($_POST['signup-button'])) {
     }
 
     $encrypted_password = hash('sha256', $password);
-    $sql = "INSERT INTO user (nama, email, password) VALUES ('$name', '$email', '$encrypted_password')";
+    $sql = "INSERT INTO user (nama, email, password, role) VALUES ('$name', '$email', '$encrypted_password', DEFAULT)";
     $query = mysqli_query($db, $sql);
 
     if ($query) {

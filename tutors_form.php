@@ -1,3 +1,12 @@
+<?php
+session_start();
+include("config.php");
+
+if (!isset($_SESSION['loginID'])) {
+    header("Location: login.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,17 +47,17 @@
     <main class="flex flex-col justify-center items-center min-h-screen px-2 -mt-[70px]">
         <section class="shine-white mt-16 bg-white p-12 sm:p-16 md:w-[50%] lg:w-[40%] xl:w-[30%] mx-auto rounded-lg">
             <h1 class="text-3xl font-bold text-center mb-4">Tambah Tutor</h1>
-            <form class="flex flex-col gap-4">
+            <form class="flex flex-col gap-4" action="post_tutor.php" method="post">
                 <div>
                     <label for="nama" class="font-semibold text-[#1C1C1E]">Nama Tutor</label>
                     <input id="nama" name="nama" class="w-full p-1.5 rounded-md bg-[#d1d5dc] text-[#1C1C1E] focus:outline-0" required />
                 </div>
                 <div>
                     <label for="email" class="font-semibold text-[#1C1C1E]">Email</label>
-                    <input id="email" name="email" class="w-full p-1.5 rounded-md bg-[#d1d5dc] text-[#1C1C1E] focus:outline-0" required />
+                    <input id="email" name="email" type="email" class="w-full p-1.5 rounded-md bg-[#d1d5dc] text-[#1C1C1E] focus:outline-0" required />
                 </div>
                 <div class="mt-4 flex flex-col gap-2">
-                    <button class="w-full btn bg-[#1C1C1E] text-white" type="submit">Tambah</button>
+                    <button class="w-full btn bg-[#1C1C1E] text-white" type="submit" name="add-tutor">Tambah</button>
                 </div>
             </form>
         </section>

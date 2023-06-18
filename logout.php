@@ -7,5 +7,6 @@ $ret = array(
     'success' => true,
     'message' => 'Succesfully logged out',
 );
+header('Location: index.php');
 echo json_encode($ret);
 exit;

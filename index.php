@@ -8,15 +8,14 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="global.css">
 </head>
 <style>
 </style>
 
 <body>
-<nav class="h-[70px] bg-[#7C32A1]">
+    <nav class="h-[70px] bg-[#7C32A1]">
         <div class="layout flex justify-between gap-4 items-center h-full">
             <div>
                 <h1 class="text-white text-xl font-bold">Study.id</h1>
@@ -32,6 +31,7 @@
                 <div class="flex justify-around gap-2 lg:gap-6 items-center">
                     <a class="nav-item" href="./contact.php">Contact Us</a>
                     <a class="nav-item" href="./login.php">Login</a>
+                    <a class="nav-item" href="./logout.php">Logout</a>
                     <button class="btn" role="button" onclick="window.location.href = './signup.php'">Sign Up</button>
                 </div>
             </div>

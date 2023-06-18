@@ -17,7 +17,8 @@ if (!isset($_SESSION['loginID'])) {
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="global.css">
 </head>
 
@@ -55,7 +56,8 @@ if (!isset($_SESSION['loginID'])) {
             ?>
         </div>
         <form class="mt-4 w-full">
-            <input id="search" name="search" class="w-full p-2 rounded-md bg-[#5f5f5f] text-white focus:outline-0 " placeholder="Search.." />
+            <input id="search" name="search" class="w-full p-2 rounded-md bg-[#5f5f5f] text-white focus:outline-0 "
+                placeholder="Search.." />
         </form>
         <section class="grid md:grid-cols-2 xl:grid-cols-3 gap-8 xl:gap-x-16 gap-y-8 mt-8">
             <?php
@@ -64,12 +66,20 @@ if (!isset($_SESSION['loginID'])) {
 
             while ($course = mysqli_fetch_assoc($courses)) {
                 $id = $course['id'];
-            ?>
-                <div id="course-<?= $id ?>" class="p-6 bg-[#191919] text-white shine-white-sm rounded-lg">
+                ?>
+                <div id="course-<?= $id ?>" class="p-6 bg-[#191919] text-white shine-white-sm rounded-lg cursor-pointer"
+                    onclick="window.location.href = './courses_detail.php?nama=<?= $course['nama'] ?>'">
                     <img src="<?= $course['gambar_kursus'] ?>" class="w-full h-[200px] object-cover">
                     <div class='mt-4'>
-                        <h1><?= $course['nama'] ?></h1>
-                        <p class="text-[#d1d5dc90] text-[14px]"><?= $course['deskripsi'] ?></p>
+                        <div class="flex gap-2 items-center">
+                            <h1>
+                                <?= $course['nama'] ?>
+                            </h1>
+                            <img src="./resources/check-mark.png" alt="Terdaftar" class="w-[12px] object-contain invert">
+                        </div>
+                        <p class="text-[#d1d5dc90] text-[14px]">
+                            <?= $course['deskripsi'] ?>
+                        </p>
                     </div>
                 </div>
             <?php } ?>

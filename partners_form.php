@@ -26,8 +26,8 @@
                     <a class="nav-item" href="./">Home</a>
                     <a class="nav-item" href="./courses.php">Courses</a>
                     <a class="nav-item" href="./tutors.php">Tutors</a>
-                    <a class="nav-item opacity-100" href="./admissions.php">Admissions</a>
-                    <a class="nav-item" href="./partners.php">Partners</a>
+                    <a class="nav-item" href="./admissions.php">Admissions</a>
+                    <a class="nav-item opacity-100" href="./partners.php">Partners</a>
                 </div>
                 <div class="flex justify-around gap-2 lg:gap-6 items-center">
                     <a class="nav-item" href="./contact.php">Contact Us</a>
@@ -39,14 +39,25 @@
     </nav>
     <main class="flex flex-col justify-center items-center min-h-screen px-2 -mt-[70px]">
         <section class="shine-white mt-16 bg-white p-12 sm:p-16 md:w-[50%] lg:w-[40%] xl:w-[30%] mx-auto rounded-lg">
+            <h1 class="text-3xl font-bold text-center mb-4">Tambah Partner</h1>
             <form class="flex flex-col gap-4">
                 <div>
-                    <label for="nama" class="font-semibold text-[#1C1C1E]">Nama Course</label>
+                    <label for="nama" class="font-semibold text-[#1C1C1E]">Nama Partner</label>
                     <input id="nama" name="nama"
-                        class="w-full p-1.5 rounded-md bg-[#d1d5dc] text-[#1C1C1E] focus:outline-0" />
+                        class="w-full p-1.5 rounded-md bg-[#d1d5dc] text-[#1C1C1E] focus:outline-0" required/>
                 </div>
-                <div class="flex flex-col gap-2">
-                    <button class="w-full btn bg-[#1C1C1E] text-white" type="submit">Daftar</button>
+                <div>
+                    <label for="email" class="font-semibold text-[#1C1C1E]">Email</label>
+                    <input id="email" name="email"
+                        class="w-full p-1.5 rounded-md bg-[#d1d5dc] text-[#1C1C1E] focus:outline-0" required/>
+                </div>
+                <div>
+                    <label for="logo" class="font-semibold text-[#1C1C1E]">URL Logo</label>
+                    <input id="logo" name="logo"
+                        class="w-full p-1.5 rounded-md bg-[#d1d5dc] text-[#1C1C1E] focus:outline-0" required/>
+                </div>
+                <div class="mt-4 flex flex-col gap-2">
+                    <button class="w-full btn bg-[#1C1C1E] text-white" type="submit">Tambah</button>
                 </div>
             </form>
         </section>

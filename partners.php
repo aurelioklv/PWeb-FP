@@ -41,7 +41,7 @@ include("config.php");
     <main class="layout px-2 mt-8">
         <div class="flex justify-between">
             <h1 class="text-3xl text-white font-bold">Partners</h1>
-            <button class="btn">Tambah</button>
+            <button class="btn" onclick="window.location.href = './partners_form.php'">Tambah</button>
         </div>
         <form class="mt-4 w-full">
             <input id="search" name="search" class="w-full p-2 rounded-md bg-[#5f5f5f] text-white focus:outline-0 " placeholder="Search.." />

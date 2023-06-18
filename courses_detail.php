@@ -24,9 +24,9 @@
             <div class="hidden md:flex justify-around gap-4 lg:gap-16 items-center">
                 <div class="flex justify-around gap-2 lg:gap-6 items-center">
                     <a class="nav-item" href="./">Home</a>
-                    <a class="nav-item" href="./courses.php">Courses</a>
+                    <a class="nav-item  opacity-100" href="./courses.php">Courses</a>
                     <a class="nav-item" href="./tutors.php">Tutors</a>
-                    <a class="nav-item opacity-100" href="./admissions.php">Admissions</a>
+                    <a class="nav-item" href="./admissions.php">Admissions</a>
                     <a class="nav-item" href="./partners.php">Partners</a>
                 </div>
                 <div class="flex justify-around gap-2 lg:gap-6 items-center">
@@ -37,19 +37,26 @@
             </div>
         </div>
     </nav>
-    <main class="flex flex-col justify-center items-center min-h-screen px-2 -mt-[70px]">
-        <section class="shine-white mt-16 bg-white p-12 sm:p-16 md:w-[50%] lg:w-[40%] xl:w-[30%] mx-auto rounded-lg">
-            <form class="flex flex-col gap-4">
-                <div>
-                    <label for="nama" class="font-semibold text-[#1C1C1E]">Nama Course</label>
-                    <input id="nama" name="nama"
-                        class="w-full p-1.5 rounded-md bg-[#d1d5dc] text-[#1C1C1E] focus:outline-0" />
-                </div>
-                <div class="flex flex-col gap-2">
-                    <button class="w-full btn bg-[#1C1C1E] text-white" type="submit">Daftar</button>
-                </div>
-            </form>
-        </section>
+    <main class="layout mt-10">
+        <div class="flex flex-col md:flex-row justify-start gap-4 items-center">
+            <img src="./uploads/moyaibutgru.png" />
+            <div>
+                <h1 class="text-4xl text-white font-bold">Courses1</h1>
+                <p class="text-sm text-[#d1d5dc]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident,
+                    iusto.
+                </p>
+            </div>
+        </div>
+
+        <h1 class="text-3xl text-white font-bold mt-10 underline">Content</h1>
+        <p class="mt-4 text-white text-justify">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos illo sint,
+            minus repudiandae nostrum amet libero accusamus voluptas esse, perferendis corporis. Nihil ducimus ullam
+            eaque voluptatum nostrum exercitationem esse, nesciunt alias tempora sapiente, distinctio, sequi error modi
+            perspiciatis! Necessitatibus porro officia tempora provident iste explicabo corrupti perferendis quae,
+            eveniet numquam. Laborum, expedita! Ullam facilis molestias rerum molestiae et. Obcaecati deleniti sed est
+            laboriosam eum ipsum fugit pariatur dolores, reiciendis voluptates laborum, fuga magnam enim cumque ab
+            corrupti alias incidunt minima cum eaque? Qui, tenetur autem? Necessitatibus distinctio neque similique
+            quia, mollitia, maxime dicta nulla, quibusdam soluta odit est illo quis.</p>
     </main>
 </body>
 

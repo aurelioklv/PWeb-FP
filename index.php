@@ -76,7 +76,7 @@
                 </div>
             </div>
         </section>
-        <section class="py-72 w-[80%] mx-auto">
+        <section class="py-72 md:w-[80%] mx-auto">
             <h1 class="text-white font-bold text-3xl mb-10"><span class="text-[#AF45E4]">Dapat apa saja</span> di Study.id?</h1>
             <img class="w-full" src="./resources/grid.svg">
         </section>

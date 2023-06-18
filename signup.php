@@ -25,6 +25,7 @@ if (isset($_SESSION['loginID'])) {
         <h1 class="text-6xl text-white font-bold">Study.id</h1>
         <p class="text-white font-SEMIbold">Mulai Belajar Bersama Kami</p>
         <section class="shine-white mt-16 bg-[#1B1B1B] p-12 sm:p-16 md:w-[50%] lg:w-[40%] xl:w-[30%] mx-auto rounded-lg">
+            <h1 class="text-3xl font-bold text-white text-center mb-4">Sign Up</h1>
             <form class="flex flex-col gap-4" action="post_signup.php" method="post">
                 <div>
                     <label for="name" class="font-medium text-white">Nama</label>

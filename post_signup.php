@@ -4,7 +4,7 @@ include("config.php");
 header("Content-Type: application/json");
 
 // if (true) {
-if (isset($_POST['signup-button'])) {
+if (isset($_POST['signup'])) {
     $name = $_POST["name"];
     $email = $_POST["email"];
     $password = $_POST["password"];
@@ -14,9 +14,14 @@ if (isset($_POST['signup-button'])) {
     if (mysqli_num_rows($query)) {
         $ret = array(
             'success' => false,
-            'message' => 'Email already exists'
+            'message' => 'Email already exists',
+            'name' => $_POST['name'],
+            'email' => $_POST['email'],
+            'password' => $_POST['password'],
         );
         echo json_encode($ret);
+        $_SESSION['signupAttempt'] = $ret;
+        header("Location: signup.php");
         exit;
     }
 
@@ -38,6 +43,8 @@ if (isset($_POST['signup-button'])) {
             'message' => 'Error signing up'
         );
         echo json_encode($ret);
+        $_SESSION['signupAttempt'] = $ret;
+        header("Location: signup.php");
         exit;
     }
 } else {

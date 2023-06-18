@@ -8,8 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="global.css">
 </head>
 <style>
@@ -31,8 +30,7 @@
                 </div>
                 <div class="flex justify-around gap-2 lg:gap-6 items-center">
                     <a class="nav-item" href="./contact.php">Contact Us</a>
-                    <a class="nav-item" href="./login.php">Login</a>
-                    <button class="btn" role="button" onclick="window.location.href = './signup.php'">Sign Up</button>
+                    <button class="btn" role="button" onclick="window.location.href = './logout.php'">Log Out</button>
                 </div>
             </div>
         </div>
@@ -43,13 +41,11 @@
             <form class="flex flex-col gap-4">
                 <div>
                     <label for="nama" class="font-semibold text-[#1C1C1E]">Nama Tutor</label>
-                    <input id="nama" name="nama"
-                        class="w-full p-1.5 rounded-md bg-[#d1d5dc] text-[#1C1C1E] focus:outline-0" required/>
+                    <input id="nama" name="nama" class="w-full p-1.5 rounded-md bg-[#d1d5dc] text-[#1C1C1E] focus:outline-0" required />
                 </div>
                 <div>
                     <label for="email" class="font-semibold text-[#1C1C1E]">Email</label>
-                    <input id="email" name="email"
-                        class="w-full p-1.5 rounded-md bg-[#d1d5dc] text-[#1C1C1E] focus:outline-0" required/>
+                    <input id="email" name="email" class="w-full p-1.5 rounded-md bg-[#d1d5dc] text-[#1C1C1E] focus:outline-0" required />
                 </div>
                 <div class="mt-4 flex flex-col gap-2">
                     <button class="w-full btn bg-[#1C1C1E] text-white" type="submit">Tambah</button>

@@ -50,7 +50,7 @@ if (!isset($_SESSION['loginID'])) {
 
             // Check if the user is an admin
             if (isset($_SESSION['loginRole']) && $_SESSION['loginRole'] === 'admin') {
-                echo '<button class="btn">Tambah</button>';
+                echo '<button class="btn" role="button" onclick="window.location.href = \'./partners_form.php\'">Tambah</button>';
             }
             ?>
         </div>

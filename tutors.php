@@ -50,9 +50,9 @@ if (!isset($_SESSION['loginID'])) {
 
             // Check if the user is an admin
             if (isset($_SESSION['loginRole']) && $_SESSION['loginRole'] === 'admin') {
-                echo '<button class="btn">Tambah</button>';
-            }
             ?>
+                <button class="btn" role="button" onclick="window.location.href = './tutors_form.php'">Tambah</button>
+            <?php } ?>
         </div>
         <form class="mt-4 w-full">
             <input id="search" name="search" class="w-full p-2 rounded-md bg-[#5f5f5f] text-white focus:outline-0 " placeholder="Search.." />

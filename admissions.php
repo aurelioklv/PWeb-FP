@@ -46,14 +46,22 @@ if (!isset($_SESSION['loginID'])) {
     </nav>
     <main class="flex flex-col justify-center items-center min-h-screen px-2 -mt-[70px]">
         <section class="shine-white mt-16 bg-white p-12 sm:p-16 md:w-[50%] lg:w-[40%] xl:w-[30%] mx-auto rounded-lg">
-            <form class="flex flex-col gap-4">
+            <!-- Display error message -->
+            <?php if (isset($_SESSION['admissionAttempt']['message'])) { ?>
+                <div class="bg-gray-100 border-l-4 border-gray-500 text-gray-700 p-4 mb-2" role="alert">
+                    <p><?= $_SESSION['admissionAttempt']['message'] ?></p>
+                </div>
+            <?php
+                unset($_SESSION['admissionAttempt']['message']);
+            }
+            ?>
+            <form class="flex flex-col gap-4" action="post_admission.php" method="post">
                 <div>
-                    <label for="nama" class="font-semibold text-[#1C1C1E]">Nama Course</label>
-                    <input id="nama" name="nama"
-                        class="w-full p-1.5 rounded-md bg-[#d1d5dc] text-[#1C1C1E] focus:outline-0" />
+                    <label for="nama" class="font-semibold text-[#1C1C1E]">ID Course</label>
+                    <input id="nama" name="course_id" class="w-full p-1.5 rounded-md bg-[#d1d5dc] text-[#1C1C1E] focus:outline-0" />
                 </div>
                 <div class="flex flex-col gap-2">
-                    <button class="w-full btn bg-[#1C1C1E] text-white" type="submit">Daftar</button>
+                    <button class="w-full btn bg-[#1C1C1E] text-white" type="submit" name="admission-button">Daftar</button>
                 </div>
             </form>
         </section>

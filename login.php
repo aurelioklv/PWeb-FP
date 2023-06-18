@@ -25,7 +25,7 @@ if (isset($_SESSION['loginID'])) {
         <h1 class="text-6xl text-white font-bold">Study.id</h1>
         <p class="text-white font-SEMIbold">Mulai Belajar Bersama Kami</p>
         <section class="shine-white mt-16 bg-[#1B1B1B] p-16 md:w-[50%] lg:w-[30%] mx-auto rounded-lg">
-        <h1 class="text-3xl font-bold text-white text-center mb-4">Login</h1>
+            <h1 class="text-3xl font-bold text-white text-center mb-4">Login</h1>
             <form class="flex flex-col gap-4" action="post_login.php" method="post">
                 <!-- Display error message -->
                 <?php if (isset($_SESSION['loginAttempt']['message'])) { ?>

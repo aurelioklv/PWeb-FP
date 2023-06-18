@@ -16,6 +16,7 @@ if (isset($_POST['login-button'])) {
 
         if (hash('sha256', $password) === $encrypted_password) {
             $_SESSION['loginID'] = $row['id'];
+            $_SESSION['loginRole'] = $row['role'];
             $ret = array(
                 'success' => true,
                 'message' => 'Succesfully logged in',
@@ -27,18 +28,24 @@ if (isset($_POST['login-button'])) {
             $ret = array(
                 'success' => false,
                 'message' => 'Incorrect Password',
-                'loginData' => $_POST,
+                'email' => $_POST['email'],
+                'password' => $_POST['password'],
             );
             echo json_encode($ret);
+            $_SESSION['loginAttempt'] = $ret;
+            header("Location: login.php");
             exit;
         }
     } else {
         $ret = array(
             'success' => false,
             'message' => 'Email not found',
-            'loginData' => $_POST,
+            'email' => $_POST['email'],
+            'password' => $_POST['password'],
         );
         echo json_encode($ret);
+        $_SESSION['loginAttempt'] = $ret;
+        header("Location: login.php");
         exit;
     }
 } else {

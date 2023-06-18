@@ -1,6 +1,11 @@
 <?php
 session_start();
 include("config.php");
+
+if (!isset($_SESSION['loginID'])) {
+    header("Location: login.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,8 +37,7 @@ include("config.php");
                 </div>
                 <div class="flex justify-around gap-2 lg:gap-6 items-center">
                     <a class="nav-item" href="./contact.php">Contact Us</a>
-                    <a class="nav-item" href="./login.php">Login</a>
-                    <button class="btn" role="button" onclick="window.location.href = './signup.php'">Sign Up</button>
+                    <button class="btn" role="button" onclick="window.location.href = './logout.php'">Log Out</button>
                 </div>
             </div>
         </div>
@@ -41,7 +45,14 @@ include("config.php");
     <main class="layout px-2 mt-8">
         <div class="flex justify-between">
             <h1 class="text-3xl text-white font-bold">Partners</h1>
-            <button class="btn" onclick="window.location.href = './partners_form.php'">Tambah</button>
+            <?php
+            session_start();
+
+            // Check if the user is an admin
+            if (isset($_SESSION['loginRole']) && $_SESSION['loginRole'] === 'admin') {
+                echo '<button class="btn">Tambah</button>';
+            }
+            ?>
         </div>
         <form class="mt-4 w-full">
             <input id="search" name="search" class="w-full p-2 rounded-md bg-[#5f5f5f] text-white focus:outline-0 " placeholder="Search.." />

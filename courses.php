@@ -1,3 +1,7 @@
+<?php
+session_start();
+include("config.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,8 +12,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="global.css">
 </head>
 
@@ -41,82 +44,25 @@
             <button class="btn">Tambah</button>
         </div>
         <form class="mt-4 w-full">
-            <input id="search" name="search" class="w-full p-2 rounded-md bg-[#5f5f5f] text-white focus:outline-0 "
-                placeholder="Search.." />
+            <input id="search" name="search" class="w-full p-2 rounded-md bg-[#5f5f5f] text-white focus:outline-0 " placeholder="Search.." />
         </form>
         <section class="grid md:grid-cols-2 xl:grid-cols-3 gap-8 xl:gap-x-16 gap-y-8 mt-8">
-            <div class="p-6 bg-[#191919] text-white shine-white-sm rounded-lg">
-                <img src="./uploads/moyaibutgru.png" class="w-full h-[200px] object-cover">
-                <div class='mt-4'>
-                    <h1>HTML, CSS, JS</h1>
-                    <p class="text-[#d1d5dc90] text-[14px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Suspendisse consequat mollis diam, sodales faucibus justo maximus a. Aenean at enim volutpat,
-                        pharetra tortor a, consequat dui. Proin interdum tristique accumsan. </p>
+            <?php
+            $query = "SELECT * FROM courses";
+            $courses = mysqli_query($db, $query);
+
+            while ($course = mysqli_fetch_assoc($courses)) {
+                $id = $course['id'];
+            ?>
+                <div id="course-<?= $id ?>" class="p-6 bg-[#191919] text-white shine-white-sm rounded-lg">
+                    <img src="<?= $course['gambar_kursus'] ?>" class="w-full h-[200px] object-cover">
+                    <div class='mt-4'>
+                        <h1><?= $course['nama'] ?></h1>
+                        <p class="text-[#d1d5dc90] text-[14px]"><?= $course['deskripsi'] ?></p>
+                    </div>
                 </div>
-            </div>
-            <div class="p-6 bg-[#191919] text-white shine-white-sm rounded-lg">
-                <img src="./uploads/moyaibutgru.png" class="w-full h-[200px] object-cover">
-                <div class='mt-4'>
-                    <h1>HTML, CSS, JS</h1>
-                    <p class="text-[#d1d5dc90] text-[14px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Suspendisse consequat mollis diam, sodales faucibus justo maximus a. Aenean at enim volutpat,
-                        pharetra tortor a, consequat dui. Proin interdum tristique accumsan. </p>
-                </div>
-            </div>
-            <div class="p-6 bg-[#191919] text-white shine-white-sm rounded-lg">
-                <img src="./uploads/moyaibutgru.png" class="w-full h-[200px] object-cover">
-                <div class='mt-4'>
-                    <h1>HTML, CSS, JS</h1>
-                    <p class="text-[#d1d5dc90] text-[14px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Suspendisse consequat mollis diam, sodales faucibus justo maximus a. Aenean at enim volutpat,
-                        pharetra tortor a, consequat dui. Proin interdum tristique accumsan. </p>
-                </div>
-            </div>
-            <div class="p-6 bg-[#191919] text-white shine-white-sm rounded-lg">
-                <img src="./uploads/moyaibutgru.png" class="w-full h-[200px] object-cover">
-                <div class='mt-4'>
-                    <h1>HTML, CSS, JS</h1>
-                    <p class="text-[#d1d5dc90] text-[14px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Suspendisse consequat mollis diam, sodales faucibus justo maximus a. Aenean at enim volutpat,
-                        pharetra tortor a, consequat dui. Proin interdum tristique accumsan. </p>
-                </div>
-            </div>
-            <div class="p-6 bg-[#191919] text-white shine-white-sm rounded-lg">
-                <img src="./uploads/moyaibutgru.png" class="w-full h-[200px] object-cover">
-                <div class='mt-4'>
-                    <h1>HTML, CSS, JS</h1>
-                    <p class="text-[#d1d5dc90] text-[14px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Suspendisse consequat mollis diam, sodales faucibus justo maximus a. Aenean at enim volutpat,
-                        pharetra tortor a, consequat dui. Proin interdum tristique accumsan. </p>
-                </div>
-            </div>
-            <div class="p-6 bg-[#191919] text-white shine-white-sm rounded-lg">
-                <img src="./uploads/moyaibutgru.png" class="w-full h-[200px] object-cover">
-                <div class='mt-4'>
-                    <h1>HTML, CSS, JS</h1>
-                    <p class="text-[#d1d5dc90] text-[14px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Suspendisse consequat mollis diam, sodales faucibus justo maximus a. Aenean at enim volutpat,
-                        pharetra tortor a, consequat dui. Proin interdum tristique accumsan. </p>
-                </div>
-            </div>
-            <div class="p-6 bg-[#191919] text-white shine-white-sm rounded-lg">
-                <img src="./uploads/moyaibutgru.png" class="w-full h-[200px] object-cover">
-                <div class='mt-4'>
-                    <h1>HTML, CSS, JS</h1>
-                    <p class="text-[#d1d5dc90] text-[14px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Suspendisse consequat mollis diam, sodales faucibus justo maximus a. Aenean at enim volutpat,
-                        pharetra tortor a, consequat dui. Proin interdum tristique accumsan. </p>
-                </div>
-            </div>
-            <div class="p-6 bg-[#191919] text-white shine-white-sm rounded-lg">
-                <img src="./uploads/moyaibutgru.png" class="w-full h-[200px] object-cover">
-                <div class='mt-4'>
-                    <h1>HTML, CSS, JS</h1>
-                    <p class="text-[#d1d5dc90] text-[14px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Suspendisse consequat mollis diam, sodales faucibus justo maximus a. Aenean at enim volutpat,
-                        pharetra tortor a, consequat dui. Proin interdum tristique accumsan. </p>
-                </div>
-            </div>
+            <?php } ?>
+
         </section>
     </main>
 </body>

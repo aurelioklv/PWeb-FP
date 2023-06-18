@@ -1,3 +1,7 @@
+<?php
+session_start();
+include("config.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,8 +12,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="global.css">
 </head>
 
@@ -41,67 +44,24 @@
             <button class="btn">Tambah</button>
         </div>
         <form class="mt-4 w-full">
-            <input id="search" name="search" class="w-full p-2 rounded-md bg-[#5f5f5f] text-white focus:outline-0 "
-                placeholder="Search.." />
+            <input id="search" name="search" class="w-full p-2 rounded-md bg-[#5f5f5f] text-white focus:outline-0 " placeholder="Search.." />
         </form>
         <section class="grid md:grid-cols-2 xl:grid-cols-3 gap-8 xl:gap-x-16 gap-y-8 mt-8">
-            <div class="p-2 bg-[#191919] text-white shine-white-sm rounded-lg flex gap-4 items-center">
-                <img src="./uploads/moyaibutgru.png" class="w-[100px] h-[100px] object-cover">
-                <div>
-                    <h1>PT. Prasetya</h1>
-                    <p class="text-[#d1d5dc90] text-[14px]">partners@prasetya.com</p>
-                </div>
-            </div>
-            <div class="p-2 bg-[#191919] text-white shine-white-sm rounded-lg flex gap-4 items-center">
-                <img src="./uploads/moyaibutgru.png" class="w-[100px] h-[100px] object-cover">
-                <div>
-                    <h1>PT. Prasetya</h1>
-                    <p class="text-[#d1d5dc90] text-[14px]">partners@prasetya.com</p>
-                </div>
-            </div>
+            <?php
+            $query = "SELECT * FROM partners";
+            $partners = mysqli_query($db, $query);
 
-            <div class="p-2 bg-[#191919] text-white shine-white-sm rounded-lg flex gap-4 items-center">
-                <img src="./uploads/moyaibutgru.png" class="w-[100px] h-[100px] object-cover">
-                <div>
-                    <h1>PT. Prasetya</h1>
-                    <p class="text-[#d1d5dc90] text-[14px]">partners@prasetya.com</p>
+            while ($partner = mysqli_fetch_assoc($partners)) {
+                $id = $partner['id'];
+            ?>
+                <div id="partner-<?= $id ?>" class="p-2 bg-[#191919] text-white shine-white-sm rounded-lg flex gap-4 items-center">
+                    <img src="<?= $partner['logo'] ?>" class="w-[100px] h-[100px] object-cover">
+                    <div>
+                        <h1><?= $partner['nama'] ?></h1>
+                        <p class="text-[#d1d5dc90] text-[14px]"><?= $partner['email'] ?></p>
+                    </div>
                 </div>
-            </div>
-            <div class="p-2 bg-[#191919] text-white shine-white-sm rounded-lg flex gap-4 items-center">
-                <img src="./uploads/moyaibutgru.png" class="w-[100px] h-[100px] object-cover">
-                <div>
-                    <h1>PT. Prasetya</h1>
-                    <p class="text-[#d1d5dc90] text-[14px]">partners@prasetya.com</p>
-                </div>
-            </div>
-            <div class="p-2 bg-[#191919] text-white shine-white-sm rounded-lg flex gap-4 items-center">
-                <img src="./uploads/moyaibutgru.png" class="w-[100px] h-[100px] object-cover">
-                <div>
-                    <h1>PT. Prasetya</h1>
-                    <p class="text-[#d1d5dc90] text-[14px]">partners@prasetya.com</p>
-                </div>
-            </div>
-            <div class="p-2 bg-[#191919] text-white shine-white-sm rounded-lg flex gap-4 items-center">
-                <img src="./uploads/moyaibutgru.png" class="w-[100px] h-[100px] object-cover">
-                <div>
-                    <h1>PT. Prasetya</h1>
-                    <p class="text-[#d1d5dc90] text-[14px]">partners@prasetya.com</p>
-                </div>
-            </div>
-            <div class="p-2 bg-[#191919] text-white shine-white-sm rounded-lg flex gap-4 items-center">
-                <img src="./uploads/moyaibutgru.png" class="w-[100px] h-[100px] object-cover">
-                <div>
-                    <h1>PT. Prasetya</h1>
-                    <p class="text-[#d1d5dc90] text-[14px]">partners@prasetya.com</p>
-                </div>
-            </div>
-            <div class="p-2 bg-[#191919] text-white shine-white-sm rounded-lg flex gap-4 items-center">
-                <img src="./uploads/moyaibutgru.png" class="w-[100px] h-[100px] object-cover">
-                <div>
-                    <h1>PT. Prasetya</h1>
-                    <p class="text-[#d1d5dc90] text-[14px]">partners@prasetya.com</p>
-                </div>
-            </div>
+            <?php } ?>
         </section>
     </main>
 </body>

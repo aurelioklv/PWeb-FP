@@ -1,0 +1,27 @@
+on: push
+name: 🚀 Deploy website on push
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v3
+      
+    - name: Create env file
+        run: \|
+          touch .env
+          echo test=hehenotbad >> .env
+          echo AIVEN_HOST=${{ secrets.AIVEN_HOST }} >> .env
+          echo AIVEN_PORT=${{ secrets.AIVEN_PORT }} >> .env
+          echo AIVEN_NAME=${{ secrets.AIVEN_NAME }} >> .env
+          echo AIVEN_USER=${{ secrets.AIVEN_USER }} >> .env
+          echo AIVEN_PASSWORD=${{ secrets.AIVEN_PASSWORD }} >> .env
+          echo "!.env" > .git-ftp-include # Add git untracked file
+    
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}

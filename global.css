@@ -1,6 +1,14 @@
 body {
   font-family: "Inter", sans-serif;
   background-color: #1c1c1e;
+  background-image:
+    linear-gradient(45deg, rgba(39, 39, 41, 0.1) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(34, 34, 37, 0.1) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(11, 11, 12, 0.1) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(13, 13, 14, 0.1) 75%);
+  background-size: 30px 30px;
+  background-repeat: repeat;
+  backdrop-filter: blur(2px);
 }
 
 .layout {

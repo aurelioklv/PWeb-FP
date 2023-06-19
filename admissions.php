@@ -1,5 +1,7 @@
 <?php
+
 session_start();
+
 include("config.php");
 
 if (!isset($_SESSION['loginID'])) {
@@ -17,7 +19,8 @@ if (!isset($_SESSION['loginID'])) {
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="global.css">
 </head>
 <style>
@@ -49,19 +52,23 @@ if (!isset($_SESSION['loginID'])) {
             <!-- Display error message -->
             <?php if (isset($_SESSION['admissionAttempt']['message'])) { ?>
                 <div class="bg-gray-100 border-l-4 border-gray-500 text-gray-700 p-4 mb-2" role="alert">
-                    <p><?= $_SESSION['admissionAttempt']['message'] ?></p>
+                    <p>
+                        <?= $_SESSION['admissionAttempt']['message'] ?>
+                    </p>
                 </div>
-            <?php
+                <?php
                 unset($_SESSION['admissionAttempt']['message']);
             }
             ?>
             <form class="flex flex-col gap-4" action="post_admission.php" method="post">
                 <div>
                     <label for="nama" class="font-semibold text-[#1C1C1E]">ID Course</label>
-                    <input id="nama" name="course_id" class="w-full p-1.5 rounded-md bg-[#d1d5dc] text-[#1C1C1E] focus:outline-0" />
+                    <input id="nama" name="course_id"
+                        class="w-full p-1.5 rounded-md bg-[#d1d5dc] text-[#1C1C1E] focus:outline-0" />
                 </div>
                 <div class="flex flex-col gap-2">
-                    <button class="w-full btn bg-[#1C1C1E] text-white" type="submit" name="admission-button">Daftar</button>
+                    <button class="w-full btn bg-[#1C1C1E] text-white" type="submit"
+                        name="admission-button">Daftar</button>
                 </div>
             </form>
         </section>

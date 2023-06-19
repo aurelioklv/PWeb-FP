@@ -43,7 +43,7 @@ if (isset($_SESSION['loginID'])) {
 
                 <div>
                     <label for="password" class="font-medium text-white">Password</label>
-                    <input id="password" name="password" class="w-full p-1.5 rounded-md bg-[#5f5f5f] text-white focus:outline-0" />
+                    <input id="password" name="password" type="password" class="w-full p-1.5 rounded-md bg-[#5f5f5f] text-white focus:outline-0" />
                 </div>
                 <div class="mt-8 flex flex-col gap-2">
                     <button class="w-full btn bg-white" type="submit" name="login-button">Login</button>

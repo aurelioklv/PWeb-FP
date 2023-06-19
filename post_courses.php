@@ -13,7 +13,7 @@ if (true) {
     $tutor_id = $_POST['id_tutor'];
     $partner_id = $_POST['id_partner'];
 
-    $sql = "INSERT INTO courses (nama, deskripsi, konten, gambar_kursus, harga, tutor_id, partners_id) VALUES ($name, $description, $content, $url, $price, $tutor_id, $partner_id)";
+    $sql = "INSERT INTO courses (nama, deskripsi, konten, gambar_kursus, harga, tutor_id, partners_id) VALUES ('$name', '$description', '$content', '$url', $price, $tutor_id, $partner_id)";
     $query = mysqli_query($db, $sql);
 
     if ($query) {

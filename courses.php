@@ -47,8 +47,6 @@ if (!isset($_SESSION['loginID'])) {
         <div class="flex justify-between">
             <h1 class="text-3xl text-white font-bold">Courses</h1>
             <?php
-            session_start();
-
             // Check if the user is an admin
             if (isset($_SESSION['loginRole']) && $_SESSION['loginRole'] === 'admin') {
                 echo '<button class="btn" role="button" onclick="window.location.href = \'./courses_form.php\'">Tambah</button>';
@@ -69,10 +67,10 @@ if (!isset($_SESSION['loginID'])) {
                 $id = $course['c_id'];
                 $admitted = $course['a_id'] != null ? true : false;
             ?>
-                <div id="course-<?= $id ?>" class="p-6 bg-[#191919] text-white shine-white-sm rounded-lg cursor-pointer course" onclick="window.location.href = './courses_detail.php?id=<?= $id ?>'">
+                <div id="course-<?= $id ?>" class="p-6 bg-[#191919] text-white shine-white-sm rounded-lg cursor-pointer h-fit course" onclick="window.location.href = './courses_detail.php?id=<?= $id ?>'">
                     <?php if (isset($_SESSION['accessCourses']) && $_SESSION['accessCourses']['course_id'] == $id) { ?>
                         <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-1 mb-2" role="alert">
-                            <p><?= $_SESSION['accessCourses']['message'] . '. Click here to make admission' ?></p>
+                            <p><?= $_SESSION['accessCourses']['message'] . '. Please make an admission with Course ID: ' . $id ?></p>
                         </div>
                     <?php
                         unset($_SESSION['accessCourses']);

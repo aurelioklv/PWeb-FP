@@ -58,7 +58,7 @@ if (!isset($_SESSION['loginID'])) {
         <form class="mt-4 w-full">
             <input id="search" name="search" class="w-full p-2 rounded-md bg-[#5f5f5f] text-white focus:outline-0 " placeholder="Search.." />
         </form>
-        <section class="grid md:grid-cols-2 xl:grid-cols-3 gap-8 xl:gap-x-16 gap-y-8 mt-8">
+        <section id="courseContainer" class="grid md:grid-cols-2 xl:grid-cols-3 gap-8 xl:gap-x-16 gap-y-8 mt-8">
             <?php
             // $query = "SELECT * FROM courses";
             $user_id = $_SESSION['loginID'];
@@ -69,7 +69,7 @@ if (!isset($_SESSION['loginID'])) {
                 $id = $course['c_id'];
                 $admitted = $course['a_id'] != null ? true : false;
             ?>
-                <div id="course-<?= $id ?>" class="p-6 bg-[#191919] text-white shine-white-sm rounded-lg cursor-pointer" onclick="window.location.href = './courses_detail.php?id=<?= $id ?>'">
+                <div id="course-<?= $id ?>" class="p-6 bg-[#191919] text-white shine-white-sm rounded-lg cursor-pointer course" onclick="window.location.href = './courses_detail.php?id=<?= $id ?>'">
                     <?php if (isset($_SESSION['accessCourses']) && $_SESSION['accessCourses']['course_id'] == $id) { ?>
                         <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-1 mb-2" role="alert">
                             <p><?= $_SESSION['accessCourses']['message'] . '. Click here to make admission' ?></p>
@@ -97,6 +97,26 @@ if (!isset($_SESSION['loginID'])) {
 
         </section>
     </main>
+    <script>
+        const searchInput = document.getElementById('search');
+        const courseContainer = document.getElementById('courseContainer');
+        const courses = Array.from(courseContainer.getElementsByClassName('course'));
+
+        searchInput.addEventListener('input', function() {
+            const query = searchInput.value.toLowerCase();
+
+            courses.forEach(course => {
+                const courseName = course.getElementsByTagName('h1')[0].innerText.toLowerCase();
+                const courseDesc = course.getElementsByTagName('p')[0].innerText.toLowerCase();
+
+                if (courseName.includes(query) || courseDesc.includes(query)) {
+                    course.classList.remove('hidden');
+                } else {
+                    course.classList.add('hidden');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

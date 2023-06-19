@@ -57,7 +57,7 @@ if (!isset($_SESSION['loginID'])) {
         <form class="mt-4 w-full">
             <input id="search" name="search" class="w-full p-2 rounded-md bg-[#5f5f5f] text-white focus:outline-0 " placeholder="Search.." />
         </form>
-        <section class="grid md:grid-cols-2 xl:grid-cols-3 gap-8 xl:gap-x-16 gap-y-8 mt-8">
+        <section id="partnersContainer" class="grid md:grid-cols-2 xl:grid-cols-3 gap-8 xl:gap-x-16 gap-y-8 mt-8">
             <?php
             $query = "SELECT * FROM partners";
             $partners = mysqli_query($db, $query);
@@ -65,7 +65,7 @@ if (!isset($_SESSION['loginID'])) {
             while ($partner = mysqli_fetch_assoc($partners)) {
                 $id = $partner['id'];
             ?>
-                <div id="partner-<?= $id ?>" class="p-2 bg-[#191919] text-white shine-white-sm rounded-lg flex gap-4 items-center">
+                <div id="partner-<?= $id ?>" class="p-2 bg-[#191919] text-white shine-white-sm rounded-lg flex gap-4 items-center partner">
                     <img src="<?= $partner['logo'] ?>" class="w-[100px] h-[100px] object-cover">
                     <div>
                         <h1><?= $partner['nama'] ?></h1>
@@ -75,6 +75,26 @@ if (!isset($_SESSION['loginID'])) {
             <?php } ?>
         </section>
     </main>
+    <script>
+        const searchInput = document.getElementById('search');
+        const partnersContainer = document.getElementById('partnersContainer');
+        const partners = Array.from(partnersContainer.getElementsByClassName('partner'));
+
+        searchInput.addEventListener('input', function() {
+            const query = searchInput.value.toLowerCase();
+
+            partners.forEach(partner => {
+                const partnerName = partner.querySelector('div > h1').innerText.toLowerCase();
+                const partnerEmail = partner.querySelector('div > p').innerText.toLowerCase();
+
+                if (partnerName.includes(query) || partnerEmail.includes(query)) {
+                    partner.classList.remove('hidden');
+                } else {
+                    partner.classList.add('hidden');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

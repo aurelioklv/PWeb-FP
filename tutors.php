@@ -57,7 +57,7 @@ if (!isset($_SESSION['loginID'])) {
         <form class="mt-4 w-full">
             <input id="search" name="search" class="w-full p-2 rounded-md bg-[#5f5f5f] text-white focus:outline-0 " placeholder="Search.." />
         </form>
-        <section class="grid md:grid-cols-2 xl:grid-cols-3 gap-8 xl:gap-x-16 gap-y-8 mt-8">
+        <section id="tutorContainer" class="grid md:grid-cols-2 xl:grid-cols-3 gap-8 xl:gap-x-16 gap-y-8 mt-8">
             <?php
             $query = "SELECT * FROM tutor";
             $tutors = mysqli_query($db, $query);
@@ -65,7 +65,7 @@ if (!isset($_SESSION['loginID'])) {
             while ($tutor = mysqli_fetch_assoc($tutors)) {
                 $id = $tutor['id'];
             ?>
-                <div id="tutor-<?= $id ?>" class="p-6 bg-[#191919] text-white shine-white-sm rounded-lg">
+                <div id="tutor-<?= $id ?>" class="p-6 bg-[#191919] text-white shine-white-sm rounded-lg tutor">
                     <h1><?= $tutor['nama']  ?></h1>
                     <a href="mailto:<?= $tutor['email'] ?>" class="text-[#d1d5dc90]"><?= $tutor['email'] ?></a>
                     <?php
@@ -91,6 +91,27 @@ if (!isset($_SESSION['loginID'])) {
             <?php } ?>
         </section>
     </main>
+    <script>
+        const searchInput = document.getElementById('search');
+        const tutorContainer = document.getElementById('tutorContainer');
+        const tutors = Array.from(tutorContainer.getElementsByClassName('tutor'));
+
+        searchInput.addEventListener('input', function() {
+            const query = searchInput.value.toLowerCase();
+
+            tutors.forEach(tutor => {
+                const tutorName = tutor.getElementsByTagName('h1')[0].innerText.toLowerCase();
+                const tutorEmail = tutor.getElementsByTagName('a')[0].innerText.toLowerCase();
+                const tutorCourses = tutor.getElementsByTagName('p')[0].innerText.toLowerCase();
+
+                if (tutorName.includes(query) || tutorEmail.includes(query) || tutorCourses.includes(query)) {
+                    tutor.classList.remove('hidden');
+                } else {
+                    tutor.classList.add('hidden');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

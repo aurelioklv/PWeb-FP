@@ -9,7 +9,7 @@ if (isset($_POST['partner-button'])) {
     $email = $_POST["email"];
     $logo = $_POST["logo"];
 
-    $sql = "SELECT * FROM partners WHERE email = $email";
+    $sql = "SELECT * FROM partners WHERE email = '$email'";
     $query = mysqli_query($db, $sql);
     if (mysqli_num_rows($query)) {
         $ret = array(
@@ -24,7 +24,7 @@ if (isset($_POST['partner-button'])) {
         exit;
     }
 
-    $sql = "INSERT INTO partners (nama, email, logo) VALUES ($name, $email, $logo)";
+    $sql = "INSERT INTO partners (nama, email, logo) VALUES ('$name', '$email', '$logo')";
     $query = mysqli_query($db, $sql);
 
     if ($query) {

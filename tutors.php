@@ -46,8 +46,6 @@ if (!isset($_SESSION['loginID'])) {
         <div class="flex justify-between">
             <h1 class="text-3xl text-white font-bold">Tutors</h1>
             <?php
-            session_start();
-
             // Check if the user is an admin
             if (isset($_SESSION['loginRole']) && $_SESSION['loginRole'] === 'admin') {
             ?>
@@ -65,8 +63,8 @@ if (!isset($_SESSION['loginID'])) {
             while ($tutor = mysqli_fetch_assoc($tutors)) {
                 $id = $tutor['id'];
             ?>
-                <div id="tutor-<?= $id ?>" class="p-6 bg-[#191919] text-white shine-white-sm rounded-lg tutor">
-                    <h1><?= $tutor['nama']  ?></h1>
+                <div id="tutor-<?= $id ?>" class="p-6 bg-[#191919] text-white shine-white-sm rounded-lg tutor h-fit">
+                    <h1><?= $tutor['nama']  ?><span class="text-[#d1d5dc] text-xs"> (<?= $tutor['id']  ?>)</span> </h1>
                     <a href="mailto:<?= $tutor['email'] ?>" class="text-[#d1d5dc90]"><?= $tutor['email'] ?></a>
                     <?php
                     $query = "SELECT * FROM tutor t INNER JOIN courses c ON c.tutor_id = t.id  WHERE tutor_id = '$id' ORDER BY c.nama";

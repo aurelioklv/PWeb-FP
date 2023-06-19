@@ -46,8 +46,6 @@ if (!isset($_SESSION['loginID'])) {
         <div class="flex justify-between">
             <h1 class="text-3xl text-white font-bold">Partners</h1>
             <?php
-            session_start();
-
             // Check if the user is an admin
             if (isset($_SESSION['loginRole']) && $_SESSION['loginRole'] === 'admin') {
                 echo '<button class="btn" role="button" onclick="window.location.href = \'./partners_form.php\'">Tambah</button>';
@@ -68,7 +66,7 @@ if (!isset($_SESSION['loginID'])) {
                 <div id="partner-<?= $id ?>" class="p-2 bg-[#191919] text-white shine-white-sm rounded-lg flex gap-4 items-center partner">
                     <img src="<?= $partner['logo'] ?>" class="w-[100px] h-[100px] object-cover">
                     <div>
-                        <h1><?= $partner['nama'] ?></h1>
+                        <h1><?= $partner['nama'] ?> <span class="text-[#d1d5dc] text-xs">(<?= $partner['id'] ?>)</span> </h1>
                         <p class="text-[#d1d5dc90] text-[14px]"><?= $partner['email'] ?></p>
                     </div>
                 </div>

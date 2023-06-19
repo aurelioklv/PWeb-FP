@@ -16,7 +16,7 @@
 </style>
 
 <body>
-    <nav class="h-[70px] bg-[#7C32A1]">
+<nav class="h-[70px] bg-[#7C32A1]">
         <div class="layout flex justify-between gap-4 items-center h-full">
             <div>
                 <h1 class="text-white text-xl font-bold">Study.id</h1>
@@ -31,8 +31,15 @@
                 </div>
                 <div class="flex justify-around gap-2 lg:gap-6 items-center">
                     <a class="nav-item" href="./contact.php">Contact Us</a>
-                    <a class="nav-item" href="./login.php">Login</a>
-                    <button class="btn" role="button" onclick="window.location.href = './signup.php'">Sign Up</button>
+                    <?php
+                    session_start();
+                    if (isset($_SESSION['loginID'])) {
+                        echo '<button class="btn" role="button" onclick="window.location.href = \'./logout.php\'">Log Out</button>';
+                    } else {
+                        echo '<a class="nav-item" href="./login.php">Login</a>';
+                        echo '<button class="btn" role="button" onclick="window.location.href = \'./signup.php\'">Sign Up</button>';
+                    }
+                    ?>
                 </div>
             </div>
         </div>
@@ -51,8 +58,8 @@
                 </div>
             </div>
         </section>
-        <section class="mx-auto grid md:grid-cols-[40%_60%] w-full xl:w-[60%] gap-12">
-            <img src="./resources/illustration.png" class="h-full object-cover rounded-lg mx-auto"></img>
+        <section class="mx-auto grid md:grid-cols-[40%_60%] w-full xl:w-[60%] gap-20">
+            <img src="./resources/illustration.png" class="h-full object-cover rounded-lg mx-auto shine-white"></img>
             <div class="pt-8 pb-4 flex flex-col gap-8">
                 <div class="flex flex-col gap-2">
                     <div class='w-[40px] h-[40px] bg-white flex flex-col justify-center items-center rounded-lg'>1</div>

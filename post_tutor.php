@@ -8,7 +8,7 @@ if (isset($_POST['add-tutor'])) {
     $name = $_POST["nama"];
     $email = $_POST["email"];
 
-    $sql = "SELECT * FROM tutor WHERE email = $email";
+    $sql = "SELECT * FROM tutor WHERE email = '$email'";
     $query = mysqli_query($db, $sql);
     if (mysqli_num_rows($query)) {
         $ret = array(
@@ -23,7 +23,7 @@ if (isset($_POST['add-tutor'])) {
         exit;
     }
 
-    $sql = "INSERT INTO tutor (nama, email) VALUES ($name, '$email')";
+    $sql = "INSERT INTO tutor (nama, email) VALUES ('$name', '$email')";
     $query = mysqli_query($db, $sql);
 
     if ($query) {
@@ -33,7 +33,7 @@ if (isset($_POST['add-tutor'])) {
         );
         echo json_encode($ret);
         $_SESSION['addTutorAttempt'] = $ret;
-        header("Location: tutor.php");
+        header("Location: tutors.php");
         exit;
     } else {
         $ret = array(

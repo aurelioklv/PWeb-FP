@@ -33,8 +33,6 @@ include("config.php");
                 <div class="flex justify-around gap-2 lg:gap-6 items-center">
                     <a class="nav-item opacity-100" href="./contact.php">Contact Us</a>
                     <?php
-                    session_start();
-
                     if (isset($_SESSION['loginID'])) {
                         echo '<button class="btn" role="button" onclick="window.location.href = \'./logout.php\'">Log Out</button>';
                     } else {

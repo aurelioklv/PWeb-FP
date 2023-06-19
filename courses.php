@@ -72,10 +72,18 @@ if (!isset($_SESSION['loginID'])) {
                 <div id="course-<?= $id ?>" class="p-6 bg-[#191919] text-white shine-white-sm rounded-lg cursor-pointer course" onclick="window.location.href = './courses_detail.php?id=<?= $id ?>'">
                     <?php if (isset($_SESSION['accessCourses']) && $_SESSION['accessCourses']['course_id'] == $id) { ?>
                         <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-1 mb-2" role="alert">
-                            <p><?= $_SESSION['accessCourses']['message'] . '. Click here to make admission' ?></p>
+                            <a href="./admissions.php?id=<?= $id ?>"><?= $_SESSION['accessCourses']['message'] . '. Click here to make admission' ?></a>
                         </div>
                     <?php
                         unset($_SESSION['accessCourses']);
+                    }
+                    ?>
+                    <?php if (isset($_SESSION['admissionAttempt']) && $_SESSION['admissionAttempt']['course_id'] == $id) { ?>
+                        <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-1 mb-2" role="alert">
+                            <p><?= $_SESSION['admissionAttempt']['message'] ?></p>
+                        </div>
+                    <?php
+                        unset($_SESSION['admissionAttempt']);
                     }
                     ?>
                     <img src="<?= $course['gambar_kursus'] ?>" class="w-full h-[200px] object-cover">

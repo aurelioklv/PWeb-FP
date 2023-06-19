@@ -8,6 +8,21 @@ if (isset($_POST['admission-button'])) {
     $course_id = $_POST["course_id"];
     $user_id = $_SESSION['loginID'];
 
+
+    $sql = "SELECT * FROM courses WHERE id = $course_id";
+    $query = mysqli_query($db, $sql);
+    if (!mysqli_num_rows($query)) {
+        $ret = array(
+            'success' => false,
+            'message' => 'Course doesnt exists',
+            'course_id' => $course_id,
+        );
+        echo json_encode($ret);
+        $_SESSION['admissionAttempt'] = $ret;
+        header("Location: admissions.php");
+        exit;
+    }
+
     $sql = "SELECT * FROM admission WHERE user_id = $user_id AND courses_id = $course_id";
     $query = mysqli_query($db, $sql);
     if (mysqli_num_rows($query)) {
@@ -28,10 +43,12 @@ if (isset($_POST['admission-button'])) {
     if ($query) {
         $ret = array(
             'success' => true,
-            'message' => 'Admitted'
+            'message' => 'Admission success',
+            'course_id' => $course_id,
         );
         echo json_encode($ret);
-        header("Location: courses.php");
+        $_SESSION['admissionAttempt'] = $ret;
+        header("Location: courses.php#course-$course_id");
         exit;
     } else {
         $ret = array(

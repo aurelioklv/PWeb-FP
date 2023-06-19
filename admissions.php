@@ -56,15 +56,14 @@ if (!isset($_SESSION['loginID'])) {
                         <?= $_SESSION['admissionAttempt']['message'] ?>
                     </p>
                 </div>
-                <?php
-                unset($_SESSION['admissionAttempt']['message']);
+            <?php
+                unset($_SESSION['admissionAttempt']);
             }
             ?>
             <form class="flex flex-col gap-4" action="post_admission.php" method="post">
                 <div>
                     <label for="nama" class="font-semibold text-[#1C1C1E]">ID Course</label>
-                    <input id="nama" name="course_id"
-                        class="w-full p-1.5 rounded-md bg-[#d1d5dc] text-[#1C1C1E] focus:outline-0" />
+                    <input id="nama" name="course_id" class="w-full p-1.5 rounded-md bg-[#d1d5dc] text-[#1C1C1E] focus:outline-0" value="<?php echo isset($_GET['id']) ? $_GET['id'] : ''; ?>" required />
                 </div>
                 <div class="flex flex-col gap-2">
                     <button class="w-full btn bg-[#1C1C1E] text-white" type="submit"

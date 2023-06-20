@@ -13,8 +13,7 @@ include("config.php");
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="global.css">
 </head>
 
@@ -47,33 +46,38 @@ include("config.php");
         </div>
     </nav>
     <main class="flex flex-col justify-center items-center min-h-screen px-2 -mt-[70px]">
-        <section
-            class="grid grid-cols-[60%_40%] gap-16 shine-white mt-16 bg-white p-12 sm:p-16 md:w-[85%] lg:w-[70%] xl:w-[60%] mx-auto rounded-lg">
-            <form class="flex flex-col gap-4">
+        <section class="grid grid-cols-[60%_40%] gap-16 shine-white mt-16 bg-white p-12 sm:p-16 md:w-[85%] lg:w-[70%] xl:w-[60%] mx-auto rounded-lg">
+            <form class="flex flex-col gap-4" action="post_message.php" method="post">
+                <?php if (isset($_SESSION['messageAttempt']['message'])) { ?>
+                    <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-2" role="alert">
+                        <p>
+                            <?= $_SESSION['messageAttempt']['message'] ?>
+                        </p>
+                    </div>
+                <?php
+                    unset($_SESSION['messageAttempt']);
+                }
+                ?>
                 <div>
                     <label for="nama" class="font-semibold text-[#1C1C1E]">Nama</label>
-                    <input id="nama" name="nama"
-                        class="w-full p-1.5 rounded-md bg-[#d1d5dc] text-[#1C1C1E] focus:outline-0" />
+                    <input id="nama" name="nama" class="w-full p-1.5 rounded-md bg-[#d1d5dc] text-[#1C1C1E] focus:outline-0" required />
                 </div>
                 <div>
                     <label for="email" class="font-semibold text-[#1C1C1E]">Email</label>
-                    <input id="email" name="email"
-                        class="w-full p-1.5 rounded-md bg-[#d1d5dc] text-[#1C1C1E] focus:outline-0" />
+                    <input id="email" name="email" type="email" class="w-full p-1.5 rounded-md bg-[#d1d5dc] text-[#1C1C1E] focus:outline-0" required />
                 </div>
 
                 <div>
                     <label for="nohp" class="font-semibold text-[#1C1C1E]">Nomor HP</label>
-                    <input id="nohp" name="nohp"
-                        class="w-full p-1.5 rounded-md bg-[#d1d5dc] text-[#1C1C1E] focus:outline-0" />
+                    <input id="nohp" name="nohp" class="w-full p-1.5 rounded-md bg-[#d1d5dc] text-[#1C1C1E] focus:outline-0" required />
                 </div>
 
                 <div>
                     <label for="pesan" class="font-semibold text-[#1C1C1E]">Pesan</label>
-                    <textarea rows="5" id="pesan" name="pesan"
-                        class="w-full p-1.5 rounded-md bg-[#d1d5dc]  text-[#1C1C1E] focus:outline-0"></textarea>
+                    <textarea rows="5" id="pesan" name="pesan" class="w-full p-1.5 rounded-md bg-[#d1d5dc]  text-[#1C1C1E] focus:outline-0" required></textarea>
                 </div>
                 <div class="mt-8 flex flex-col gap-2">
-                    <button class="w-full btn bg-[#1C1C1E] text-white" type="submit">Kirim Pesan</button>
+                    <button class="w-full btn bg-[#1C1C1E] text-white" type="submit" name="message-button">Kirim Pesan</button>
                 </div>
             </form>
             <section class="flex flex-col gap-8">
